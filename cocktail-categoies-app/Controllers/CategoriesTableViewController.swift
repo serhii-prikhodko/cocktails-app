@@ -95,7 +95,7 @@ class CategoriesTableViewController: UITableViewController {
 }
 
 extension CategoriesTableViewController: CategoriesDelegate {
-    func displayDrinks(categories: CategoriesList) {
+    func displayCategories(categories: CategoriesList) {
         self.categories = categories.drinks
         tableView.reloadData()
     }

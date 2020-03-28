@@ -21,7 +21,7 @@
 		1AF119FC242BFA4D008246E5 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF119FB242BFA4D008246E5 /* NetworkService.swift */; };
 		1AF11A00242C0561008246E5 /* DrinksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF119FF242C0561008246E5 /* DrinksTableViewController.swift */; };
 		1AF11A02242C058F008246E5 /* SingleDrinkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF11A01242C058F008246E5 /* SingleDrinkTableViewCell.swift */; };
-		1AF11A05242C0889008246E5 /* DrinksPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF11A04242C0889008246E5 /* DrinksPresenter.swift */; };
+		1AF11A05242C0889008246E5 /* CocktailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF11A04242C0889008246E5 /* CocktailsPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +41,7 @@
 		1AF119FB242BFA4D008246E5 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		1AF119FF242C0561008246E5 /* DrinksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksTableViewController.swift; sourceTree = "<group>"; };
 		1AF11A01242C058F008246E5 /* SingleDrinkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleDrinkTableViewCell.swift; sourceTree = "<group>"; };
-		1AF11A04242C0889008246E5 /* DrinksPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksPresenter.swift; sourceTree = "<group>"; };
+		1AF11A04242C0889008246E5 /* CocktailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,7 +145,7 @@
 		1AF11A03242C0632008246E5 /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
-				1AF11A04242C0889008246E5 /* DrinksPresenter.swift */,
+				1AF11A04242C0889008246E5 /* CocktailsPresenter.swift */,
 				1A8AEEA0242D42FC00954FC3 /* CategoriesPresenter.swift */,
 			);
 			path = Presenters;
@@ -247,7 +247,7 @@
 				1AF11A00242C0561008246E5 /* DrinksTableViewController.swift in Sources */,
 				1AF119F9242BE774008246E5 /* Category.swift in Sources */,
 				1AF119C0242BD8C4008246E5 /* AppDelegate.swift in Sources */,
-				1AF11A05242C0889008246E5 /* DrinksPresenter.swift in Sources */,
+				1AF11A05242C0889008246E5 /* CocktailsPresenter.swift in Sources */,
 				1AF119C2242BD8C4008246E5 /* SceneDelegate.swift in Sources */,
 				1AF119FC242BFA4D008246E5 /* NetworkService.swift in Sources */,
 				1A8AEEA1242D42FC00954FC3 /* CategoriesPresenter.swift in Sources */,

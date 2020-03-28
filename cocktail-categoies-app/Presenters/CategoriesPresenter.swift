@@ -8,14 +8,13 @@
 
 import Foundation
 import UIKit
-import MBProgressHUD
 
-protocol CategoriesDelegate: class {
-    func displayDrinks(categories: CategoriesList)
+protocol CategoriesDelegate {
+    func displayCategories(categories: CategoriesList)
 }
 
 class CategoriesPresenter {
-    weak var categoriesDelegate: CategoriesDelegate!
+    var categoriesDelegate: CategoriesDelegate!
     
     init(with view: CategoriesDelegate) {
         self.categoriesDelegate = view
@@ -25,7 +24,7 @@ class CategoriesPresenter {
         NetworkService.fetchCategories() { (categories: CategoriesList?, error: Error?) in
             if let categories = categories {
                 DispatchQueue.main.async {
-                    self.categoriesDelegate.displayDrinks(categories: categories)
+                    self.categoriesDelegate.displayCategories(categories: categories)
                 }
             } else if error != nil {
                 print("ERROR: \(error!.localizedDescription)")

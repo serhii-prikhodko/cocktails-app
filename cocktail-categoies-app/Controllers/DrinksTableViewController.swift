@@ -11,9 +11,13 @@ import UIKit
 class DrinksTableViewController: UITableViewController {
     
     // MARK: - Properties
-
+    var sections = [Category]()
+    lazy var presenter = CocktailsPresenter(with: self)
+    
+    // MARK: - Life circle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.presenter.loadCategoriesList()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -26,7 +30,7 @@ class DrinksTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return sections.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -34,6 +38,12 @@ class DrinksTableViewController: UITableViewController {
         return 0
     }
 
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.text = sections[section].strCategory
+        
+        return label
+    }
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
@@ -90,8 +100,15 @@ class DrinksTableViewController: UITableViewController {
     */
 
 }
-extension DrinksTableViewController: PresenterView {
-    func loadDrinks() {
-        
+extension DrinksTableViewController: CocktailDelegate {
+    func displayCategories(categories: CategoriesList) {
+        self.sections = categories.drinks
+        tableView.reloadData()
+    }
+    
+    func displayCocktailsForSelectedCategory(list: CocktailList) {
+    }
+    
+    func displayImageForCocktail(image: Data) {
     }
 }

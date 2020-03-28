@@ -16,7 +16,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "100"
             endingLineNumber = "100"
-            landmarkName = "displayDrinks(categories:)"
+            landmarkName = "displayCategories(categories:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -32,7 +32,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "99"
             endingLineNumber = "99"
-            landmarkName = "displayDrinks(categories:)"
+            landmarkName = "displayCategories(categories:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

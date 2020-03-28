@@ -29,7 +29,7 @@ class NetworkService {
         }
         task.resume()
     }
-    static func fetchDrinksByCategory(category: Category, completion: @escaping (CocktailList?, Error?)-> Void) {
+    static func fetchCocktailsByCategory(category: Category, completion: @escaping (CocktailList?, Error?)-> Void) {
         let category = category.strCategory ?? ""
         let baseURL = URL(string: "https://www.thecocktaildb.com/api/json/v1/1/filter.php")!
         let query: [String: String] = [
@@ -53,7 +53,7 @@ class NetworkService {
         
         task.resume()
     }
-    static func fetchNewsImage(cocktail: Cocktail, completionHandler: @escaping (_ data: Data?) -> () ) {
+    static func fetchCocktailImage(cocktail: Cocktail, completionHandler: @escaping (_ data: Data?) -> () ) {
         if let url = URL(string: cocktail.strDrinkThumb ?? "") {
             if UIApplication.shared.canOpenURL(url) { // check that image URL can be opened
                 let session = URLSession.shared
