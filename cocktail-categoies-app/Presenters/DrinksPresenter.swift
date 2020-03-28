@@ -7,3 +7,15 @@
 //
 
 import Foundation
+
+protocol PresenterView: class {
+    func loadDrinks()
+}
+
+class DrinksPresenter {
+    weak var view: PresenterView?
+    
+    init(with view: PresenterView) {
+        self.view = view
+    }
+}

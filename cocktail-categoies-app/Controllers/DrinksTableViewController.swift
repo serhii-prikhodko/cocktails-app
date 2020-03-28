@@ -9,6 +9,8 @@
 import UIKit
 
 class DrinksTableViewController: UITableViewController {
+    
+    // MARK: - Properties
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,4 +89,9 @@ class DrinksTableViewController: UITableViewController {
     }
     */
 
+}
+extension DrinksTableViewController: PresenterView {
+    func loadDrinks() {
+        
+    }
 }

@@ -9,9 +9,16 @@
 import UIKit
 
 class CategoriesTableViewController: UITableViewController {
+    
+    // MARK: - Properties
+    var categories = [Category]()
+    lazy var presenter = CategoriesPresenter(with: self)
+    
+    // MARK: - Life circle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.presenter.loadCategoriesList()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -24,23 +31,21 @@ class CategoriesTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.categories.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCellID", for: indexPath) as! CategoryTableViewCell
 
-        // Configure the cell...
+        cell.update(with: self.categories[indexPath.row])
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -87,4 +92,11 @@ class CategoriesTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension CategoriesTableViewController: CategoriesDelegate {
+    func displayDrinks(categories: CategoriesList) {
+        self.categories = categories.drinks
+        tableView.reloadData()
+    }
 }

@@ -7,3 +7,30 @@
 //
 
 import Foundation
+import UIKit
+import MBProgressHUD
+
+protocol CategoriesDelegate: class {
+    func displayDrinks(categories: CategoriesList)
+}
+
+class CategoriesPresenter {
+    weak var categoriesDelegate: CategoriesDelegate!
+    
+    init(with view: CategoriesDelegate) {
+        self.categoriesDelegate = view
+    }
+    
+    func loadCategoriesList() {
+        NetworkService.fetchCategories() { (categories: CategoriesList?, error: Error?) in
+            if let categories = categories {
+                DispatchQueue.main.async {
+                    self.categoriesDelegate.displayDrinks(categories: categories)
+                }
+            } else if error != nil {
+                print("ERROR: \(error!.localizedDescription)")
+            }
+        }
+    }
+   
+}
