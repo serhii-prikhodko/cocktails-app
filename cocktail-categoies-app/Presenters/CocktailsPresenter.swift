@@ -9,7 +9,7 @@
 import Foundation
 
 protocol CocktailDelegate {
-    func displayCategories(categories: CategoriesList)
+    func displayCategoriesAndFirstCocktailsList(categories: CategoriesList, cocktails: CocktailList)
     func displayCocktailsForSelectedCategory(list: CocktailList)
     func displayImageForCocktail(image: Data)
 }
@@ -23,8 +23,15 @@ class CocktailsPresenter {
     func loadCategoriesList() {
         NetworkService.fetchCategories() { (categories: CategoriesList?, error: Error?) in
             if let categories = categories {
-                DispatchQueue.main.async {
-                    self.cocktailsDelegate.displayCategories(categories: categories)
+                let firstCategory = categories.drinks[0]
+                NetworkService.fetchCocktailsByCategory(category: firstCategory) { (cocktailList: CocktailList?, error: Error?) in
+                    if let cocktailList = cocktailList {
+                        DispatchQueue.main.async {
+                            self.cocktailsDelegate.displayCategoriesAndFirstCocktailsList(categories: categories, cocktails: cocktailList)
+                        }
+                    } else if error != nil {
+                        print("ERROR: \(error!.localizedDescription)")
+                    }
                 }
             } else if error != nil {
                 print("ERROR: \(error!.localizedDescription)")

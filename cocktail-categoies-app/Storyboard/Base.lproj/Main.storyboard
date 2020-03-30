@@ -26,7 +26,7 @@
         <!--Cocktails-->
         <scene sceneID="Yoa-Tg-8z8">
             <objects>
-                <tableViewController id="GEn-ec-jST" customClass="DrinksTableViewController" customModule="cocktail_categoies_app" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="GEn-ec-jST" customClass="CocktailsTableViewController" customModule="cocktail_categoies_app" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hpD-26-ri1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -43,7 +43,7 @@
                                             <rect key="frame" x="10" y="10" width="80" height="80.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="80" id="AA6-8t-tCw"/>
-                                                <constraint firstAttribute="height" constant="80" id="OI5-BJ-Sjx"/>
+                                                <constraint firstAttribute="height" priority="750" constant="80" id="OI5-BJ-Sjx"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kub-wy-a3w">
@@ -62,6 +62,10 @@
                                         <constraint firstItem="Kub-wy-a3w" firstAttribute="centerY" secondItem="VE4-60-lyU" secondAttribute="centerY" id="hyt-MG-WcE"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cocktailNameLabel" destination="Kub-wy-a3w" id="mv1-6f-qld"/>
+                                    <outlet property="cocktailUIImageView" destination="QIa-YL-kJX" id="hNx-vj-NtX"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
