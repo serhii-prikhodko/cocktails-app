@@ -20,7 +20,8 @@ class CocktailsPresenter {
     init(with view: CocktailDelegate) {
         self.cocktailsDelegate = view
     }
-    func loadCategoriesList() {
+    func loadCategoriesList() -> Error? {
+        var haveError: Error?
         NetworkService.fetchCategories() { (categories: CategoriesList?, error: Error?) in
             if let categories = categories {
                 let firstCategory = categories.drinks[0]
@@ -31,14 +32,24 @@ class CocktailsPresenter {
                         }
                     } else if error != nil {
                         print("ERROR: \(error!.localizedDescription)")
+                         DispatchQueue.main.async {
+                            haveError = error
+                        }
                     }
                 }
             } else if error != nil {
                 print("ERROR: \(error!.localizedDescription)")
+                DispatchQueue.main.async {
+                    haveError = error
+                }
             }
         }
+        
+        return haveError
+        
     }
-    func loadCocktailsByCategory(category: Category) {
+    func loadCocktailsByCategory(category: Category) -> Error? {
+        var haveError: Error?
         NetworkService.fetchCocktailsByCategory(category: category) { (cocktailList: CocktailList?, error: Error?) in
             if let cocktailList = cocktailList {
                 DispatchQueue.main.async {
@@ -46,8 +57,13 @@ class CocktailsPresenter {
                 }
             } else if error != nil {
                 print("ERROR: \(error!.localizedDescription)")
+                DispatchQueue.main.async {
+                    haveError = error
+                }
             }
         }
+        
+        return haveError
     }
     func loadImageForCocktail(cocktail: Cocktail) {
         NetworkService.fetchCocktailImage(cocktail: cocktail, completionHandler: {(data: Data?) in
