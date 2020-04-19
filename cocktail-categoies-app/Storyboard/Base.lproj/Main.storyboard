@@ -80,7 +80,7 @@
                     <navigationItem key="navigationItem" title="Cocktails" id="En6-kl-YiO">
                         <barButtonItem key="rightBarButtonItem" title="Filter" id="lX2-Do-Dst">
                             <connections>
-                                <segue destination="ezM-vp-nRL" kind="show" id="N5U-Jk-4wT"/>
+                                <action selector="filterButtorPressed:" destination="GEn-ec-jST" id="Nr6-Ui-bVP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -92,24 +92,24 @@
             </objects>
             <point key="canvasLocation" x="1044.9275362318842" y="135.9375"/>
         </scene>
-        <!--Categories Table View Controller-->
+        <!--Categories-->
         <scene sceneID="peZ-Jh-jvU">
             <objects>
-                <tableViewController id="ezM-vp-nRL" customClass="CategoriesTableViewController" customModule="cocktail_categoies_app" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="categoriesVC_ID" id="ezM-vp-nRL" customClass="CategoriesTableViewController" customModule="cocktail_categoies_app" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="NvU-9e-POd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoryCellID" id="pWy-xi-OIs" customClass="CategoryTableViewCell" customModule="cocktail_categoies_app" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="43"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pWy-xi-OIs" id="EV0-m7-u48">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOP-bm-s0Z">
-                                            <rect key="frame" x="20" y="11" width="374" height="21.5"/>
+                                            <rect key="frame" x="20" y="11" width="374" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -132,7 +132,16 @@
                             <outlet property="delegate" destination="ezM-vp-nRL" id="TSn-ek-HCx"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="lkK-1P-uPn"/>
+                    <navigationItem key="navigationItem" title="Categories" id="lkK-1P-uPn">
+                        <barButtonItem key="rightBarButtonItem" title="Apply" id="E4H-b4-lhy">
+                            <connections>
+                                <action selector="applyButtonPressed:" destination="ezM-vp-nRL" id="QTK-8r-9IR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="applyBarButton" destination="E4H-b4-lhy" id="tTv-s6-tNi"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xtw-xX-HVV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

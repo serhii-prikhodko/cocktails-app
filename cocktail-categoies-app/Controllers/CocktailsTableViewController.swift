@@ -9,7 +9,6 @@
 import UIKit
 
 class CocktailsTableViewController: UITableViewController {
-    
     // MARK: - Properties
     var currentCategoryIndex = 0
     var categories = [Category]()
@@ -88,6 +87,28 @@ class CocktailsTableViewController: UITableViewController {
         let alertController = UIAlertController (title: title, message: message, preferredStyle: style)
         alertController.addAction(UIAlertAction(title: "OK", style: .default))
         self.present(alertController, animated: true, completion: nil)
+    }
+    @IBAction func filterButtorPressed(_ sender: Any) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "categoriesVC_ID") as! CategoriesTableViewController
+        
+        vc.delegate = self
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+// MARK: - Delegate functions
+}
+extension CocktailsTableViewController: TransferDelegate {
+    func setSelectedCategories(_ categories: [Category]) {
+        self.categories = categories
+        self.loadedCategories = [Category]()
+        self.cocktailsInSections = [[Cocktail]]()
+        self.currentCategoryIndex = 0
+        let error = self.presenter.loadCocktailsByCategory(category: self.categories[0])
+        if let error = error {
+            self.showAlert(title: "Warning", message: error.localizedDescription, style: .alert)
+        }
+        self.loadedCategories.append(self.categories[self.currentCategoryIndex])
     }
 }
 extension CocktailsTableViewController: CocktailDelegate {

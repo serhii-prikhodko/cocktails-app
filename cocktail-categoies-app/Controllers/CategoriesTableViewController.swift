@@ -12,17 +12,26 @@ class CategoriesTableViewController: UITableViewController {
     
     // MARK: - Properties
     var categories = [Category]()
+    var selectedCategories = [Category]()
     lazy var presenter = CategoriesPresenter(with: self)
+    @IBOutlet weak var applyBarButton: UIBarButtonItem!
+    var delegate: TransferDelegate?
     
     // MARK: - Life circle
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.presenter.loadCategoriesList()
+        self.applyBarButton.isEnabled = false
     }
-
+    
+    // MARK: - Functions
+    @IBAction func applyButtonPressed(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+        delegate?.setSelectedCategories(self.selectedCategories)
+        
+    }
+    
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -39,6 +48,20 @@ class CategoriesTableViewController: UITableViewController {
         cell.update(with: self.categories[indexPath.row])
 
         return cell
+    }
+    // Add checkmark for selected cell
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let checkmarkAccessoryType = UITableViewCell.AccessoryType.checkmark
+        let noneAccessoryType = UITableViewCell.AccessoryType.none
+        
+        if tableView.cellForRow(at: indexPath)?.accessoryType == checkmarkAccessoryType {
+            tableView.cellForRow(at: indexPath)?.accessoryType = noneAccessoryType
+            self.selectedCategories = self.selectedCategories.filter { $0.strCategory != self.categories[indexPath.row].strCategory }
+        } else {
+            tableView.cellForRow(at: indexPath)?.accessoryType = checkmarkAccessoryType
+            self.selectedCategories.append(self.categories[indexPath.row])
+        }
+        self.applyBarButton.isEnabled = true
     }
 }
 
